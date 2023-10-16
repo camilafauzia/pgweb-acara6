@@ -58,7 +58,7 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-header">
-                <h5>Rasio Jenis Kelamin</h5>
+                <h5>Persentase Koperasi</h5>
             </div>
             <div class="card-body">
                 <div id="chart"></div>
@@ -96,26 +96,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.42.0/apexcharts.min.js"
         integrity="sha512-HctQcT5hnI/elQck4950pvd50RuDnjCSGSoHI8CNyQIYVxsUoyJ+gSQIOrll4oM/Z7Kfi7WCLMIbJbiwYHFCpA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+        
     <script>
          var options = {
-          series: [17.96875, 17.96875, 4.6875, 33.59375, 25.78125],
+          series: [17.96, 17.96, 4.68, 33.59, 25.78],
           chart: {
-          type: 'donut',
-          width: 500
+          height: 350,
+          type: 'radialBar',
         },
-        labels: ["Sangat Tinggi", "Tinggi", "Rendah", "Rendah", "Sangat Rendah"],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
+        plotOptions: {
+          radialBar: {
+            dataLabels: {
+              name: {
+                fontSize: '22px',
+              },
+              value: {
+                fontSize: '16px',
+              },
+              total: {
+                show: true,
+                label: 'Total',
+                formatter: function (w) {
+                  // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+                  return 100
+                }
+              }
             }
           }
-        }]
+        },
+        labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);

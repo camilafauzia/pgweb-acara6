@@ -58,7 +58,7 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-header">
-                <h5>Rasio Jenis Kelamin</h5>
+                <h5>Laju Pertumbuhan Penduduk</h5>
             </div>
             <div class="card-body">
                 <div id="chart"></div>
@@ -96,26 +96,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.42.0/apexcharts.min.js"
         integrity="sha512-HctQcT5hnI/elQck4950pvd50RuDnjCSGSoHI8CNyQIYVxsUoyJ+gSQIOrll4oM/Z7Kfi7WCLMIbJbiwYHFCpA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+        
     <script>
-         var options = {
-          series: [17.96875, 17.96875, 4.6875, 33.59375, 25.78125],
+        var options = {
+          series: [{
+          name: 'Laju Pertumbuhan Penduduk',
+          data: [102.36, 101.72, 100.82, 99.02, 98.69],
+        }],
           chart: {
-          type: 'donut',
-          width: 500
+          height: 350,
+          type: 'radar',
         },
-        labels: ["Sangat Tinggi", "Tinggi", "Rendah", "Rendah", "Sangat Rendah"],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
+        title: {
+          text: 'Basic Radar Chart'
+        },
+        xaxis: {
+          categories: ['Harjamukti', 'Lemahwungkuk', 'Pekalipan', 'Kesambi', 'Kejaksan']
+        }
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
